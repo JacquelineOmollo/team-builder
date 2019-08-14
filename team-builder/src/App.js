@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import Form from "../src/components/Form";
-import Panels from "../src/components/Panels";
+import Form from "./components/Form";
+import Panels from "./components/Panels";
 import "./App.css";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
   ]);
   return (
     <div className="App">
+      <Form />
       {teamMember.map(teamMember => (
         <Panels teamMember={teamMember} />
       ))}
