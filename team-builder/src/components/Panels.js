@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Panels = props => {
   const teamMember = props.teamMember;
@@ -7,6 +8,7 @@ const Panels = props => {
       <div>{teamMember.name}</div>
       <div>{teamMember.email}</div>
       <div>{teamMember.role}</div>
+      <Link to={`/edit/${teamMember.id}`}>Edit</Link>
     </div>
   );
 };

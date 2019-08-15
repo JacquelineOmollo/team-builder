@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  padding: 30px;
+  padding-bottom: 20px;
 }
 
 .App-logo {
@@ -32,14 +34,22 @@
   }
 }
 
+body {
+  background-color: #00c3fff8;
+}
+
+.nav {
+  padding: 10px;
+  background-color: aliceblue;
+}
+
 form {
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30%;
 }
 
 button {
-  width: 90px;
-  min-height: 20px;
+  background: lightgray;
 }
