@@ -53,7 +53,7 @@ const Forms = props => {
           onChange={setChange}
         />
       </Form.Field>
-      <Button type="submit">Submit{textButton}</Button>
+      <Button type="submit">{textButton}</Button>
     </Form>
   );
 };

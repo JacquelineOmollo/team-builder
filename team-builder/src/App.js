@@ -18,25 +18,29 @@ function App() {
   };
   //Edit TeamMembers
   const editTeamMember = editedTeamMember => {
-    const editTeam = [...teamMember];
-    const teamIndex = editTeam.findIndex(
+    const editTeamCopy = [...teamMember];
+    const oldTeamIndex = editTeamCopy.findIndex(
       people => people.id === editedTeamMember.id
     );
-    teamIndex[0] = editedTeamMember;
-    setTeam(editTeam);
+    console.log(editTeamCopy, oldTeamIndex);
+    Object.assign(oldTeamIndex, editedTeamMember);
+    setTeam(editTeamCopy);
   };
   return (
     <div className="App">
       <h1>Build Your Team</h1>
-      <Link to="/" className="nav">
+      {/* <Link to="/" className="nav">
         Home
-      </Link>
-      <Link to="/add" className="nav">
+      </Link> */}
+      {/* <Link to="/add" className="nav">
         Add Team Memeber
-      </Link>
+      </Link> */}
       <Route
-        path="/add"
-        render={props => <Forms {...props} submitTeam={addTeamMember} />}
+        exact
+        path="/"
+        render={props => (
+          <Forms {...props} submitTeam={addTeamMember} textButton="Submit" />
+        )}
       />
       <Route
         exact
@@ -45,7 +49,22 @@ function App() {
           teamMember.map(teamMember => <Panels teamMember={teamMember} />)
         }
       />
-      <Route path="/edit/:id" render={props => <Forms {...props} />} />
+      <Route
+        path="/edit/:id"
+        render={props => {
+          teamMember.find(
+            people => people.id.toString() === props.match.params.id
+          );
+          return (
+            <Forms
+              {...props}
+              initialTeamMember={teamMember}
+              submitTeam={editTeamMember}
+              textButton="Edit Team"
+            />
+          );
+        }}
+      />
     </div>
   );
 }
